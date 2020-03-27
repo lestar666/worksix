@@ -10,13 +10,17 @@ int main() {
 	while (1) {
 		Mat frame;
 		cap >> frame;
-		Mat dstMat;
-		Mat result;
-		threshold(frame, result, 0, 255, THRESH_BINARY);
-		Sobel(result, dstMat, CV_16SC1, 1, 0, 3);
-		Sobel(result, dstMat, CV_16SC1, 0, 1, 3);
+		Mat grad_x,grad_y;
+
+		Sobel(frame,grad_x, CV_16SC1, 1, 0, 3);
+		convertScaleAbs(grad_x, grad_x);
+
+		Sobel(frame, grad_y, CV_16SC1, 0, 1, 3);
+		convertScaleAbs(grad_y, grad_y);
 		imshow("frame", frame);
-		imshow("dstMat", dstMat);
+		imshow("dstMat1", grad_x);
+		imshow("dstMat2", grad_y);
+
 		
 		waitKey(30);
 	}

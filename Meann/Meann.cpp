@@ -13,6 +13,6 @@ int main() {
 		GaussianBlur(frame, dstMat, Size(3, 3),0,0);
 		imshow("frame", frame);
 		imshow("dstMat", dstMat);
-		waitKey(30);
+		waitKey(20);
 	}
 }
